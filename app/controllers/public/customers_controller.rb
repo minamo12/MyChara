@@ -1,31 +1,30 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(params[:id])
-    if @customer.id == current_customer.id
-    else
-      redirect_to root_path
-    end
+    @customer = current_customer
   end
 
-  def updates
-    @customer = Customer.find(params[:id])
-    if @customer.id == current_customer.id
-      @customer.update(customer_params)
-      redirect_to customer_path(@customer.id)
-    else
-      redirect_to root_path
-    end
+  def update
+    @customer = current_customer
+    @customer.update(customer_params)
+    redirect_to customers_my_chara_path
+  end
+
+  def withdraw
+    @customer = current_customer
+    @customer.update(customer_params)
+    reset_session
+    redirect_to root_path
   end
 
   private
 
   def customer_params
-    params.require(:customer).permit(:name)
+    params.require(:customer).permit(:name, :is_active)
   end
 
 end

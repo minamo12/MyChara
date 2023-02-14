@@ -29,7 +29,7 @@
             <!--会員ログイン-->
             <% elsif customer_signed_in? %>
             <div><%= current_customer.name %></div>
-            <li><%= link_to "まいきゃら一覧", customer_path(current_customer.id), class: 'header-btn' %></li>
+            <li><%= link_to "まいきゃら一覧", customers_my_chara_path, class: 'header-btn' %></li>
             <li><%= link_to "タグ・カテゴリ", categories_path, class: 'header-btn' %></li>
             <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'header-btn' %></li>
 

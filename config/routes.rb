@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     root to: 'homes#top'
 
     # customers
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:edit]
+    get 'customers/my_chara' => 'customers#show'
+    patch 'customers/infomation' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw'  => 'customers#withdraw'
 
@@ -37,7 +39,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     # customers
-    resources :customers, only: [:index, :edit, :update]
+    resources :customers, only: [:index, :update]
 
     # inquiries
     resources :inquiries, only: [:index, :show, :create]
