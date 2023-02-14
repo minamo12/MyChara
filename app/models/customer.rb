@@ -8,6 +8,11 @@ class Customer < ApplicationRecord
   validates_uniqueness_of :name
   validates_presence_of :name
 
+  has_many :categories, dependent: :destroy
+  has_many :tags, dependent: :destroy
+  has_many :characters, dependent: :destroy
+  has_many :inquiries, dependent: :destroy
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
