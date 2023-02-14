@@ -1,2 +1,49 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+
+<div>
+
+  <div>会員一覧</div>
+  <div>
+    <% @customers.each do |customer| %>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ユーザ名</th>
+            <th>ステータス</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= customer.id %></td>
+            <td><%= customer.name %></td>
+            <td>
+            <%= form_with model: @customer, url: admin_customer_path(customer.id), method: :patch do |f| %>
+              <% if customer.is_active %>
+                <div>現在　有効</div>
+                <div>
+                <%= f.radio_button :is_active, false %>
+                <label>退会にする</label>
+                </div>
+
+              <% else %>
+                <div>現在　退会</div>
+                <div>
+                  <%= f.radio_button :is_active, true %>
+                  <label>有効にする</label>
+                </div>
+              <% end %>
+              <%= f.submit '変更' %>
+              <% end %>
+            </td>
+            <td></td>
+
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+
+  <div>お問い合わせ</div>
+
+</div>

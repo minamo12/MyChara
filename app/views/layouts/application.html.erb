@@ -11,6 +11,41 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <header>
+      <div class="width-100p">
+        <!--ロゴ-->
+        <h1><%= link_to "まいきゃら", root_path, class: 'logo' %></h1>
+
+        <div class="list">
+
+          <ul>
+            <!--管理者ログイン-->
+            <% if admin_signed_in? %>
+            <li><%= link_to "お問い合わせ", admin_inquiries_path, class: 'header-btn' %></li>
+            <li><%= link_to "会員一覧", admin_customers_path, class: 'header-btn' %></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'header-btn' %></li>
+
+            <!--会員ログイン-->
+            <% elsif customer_signed_in? %>
+            <div><%= current_customer.name %></div>
+            <li><%= link_to "まいきゃら一覧", customer_path(current_customer.id), class: 'header-btn' %></li>
+            <li><%= link_to "タグ・カテゴリ", categories_path, class: 'header-btn' %></li>
+            <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'header-btn' %></li>
+
+            <!--共通ログアウト-->
+            <% else %>
+            <li><%= link_to "ログイン", new_customer_session_path, class: 'header-btn' %></li>
+
+            <% end %>
+          </ul>
+
+        </div>
+
+      </div>
+    </header>
+
+    <main><%= yield %></main>
+
   </body>
 </html>
