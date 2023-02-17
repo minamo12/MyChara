@@ -27,9 +27,9 @@ Rails.application.routes.draw do
 
     # categories
     resources :categories, only: [:index, :create, :update, :destroy]
-    post 'tag' => 'categories#tag'
-    patch 'tag_update/:id' => 'categories#tag_update', as: 'tag_update'
-    delete 'tag_destroy/:id' => 'categories#tag_destroy', as: 'tag_destroy'
+
+    # tags
+    resources :tags, only: [:index, :create, :update, :destroy]
 
     # inquiries
     resources :inquiries, only: [:create, :update]

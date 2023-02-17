@@ -1,2 +1,74 @@
-<h1>Public::Categories#index</h1>
-<p>Find me in app/views/public/categories/index.html.erb</p>
+
+<div>カテゴリ・タグ管理</div>
+
+<div>
+
+  <div>カテゴリ(全<%= @categories.count %>)</div>
+
+  <div>
+    <%= form_with model: @category, url: categories_path, method: :post do |f| %>
+      <%= f.text_field :name %>
+      <%= f.submit '追加' %>
+    <% end %>
+  </div>
+
+  <div>
+    <div>カテゴリ一覧</div>
+    <div>
+      <% @categories.each do |category| %>
+        <%= link_to category.name, categories_path(category_id: category.id) %>
+        <%= link_to '×', category_path(category.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <% if @edit_category.present? %>
+      <div><%= @edit_category.id %></div>
+      <div>
+        <%= form_with model: @category, url: category_path(@edit_category.id), method: :patch do |f| %>
+          <%= f.text_field :name %>
+          <%= f.submit '更新' %>
+        <% end %>
+      </div>
+    <% else %>
+      <div>なし</div>
+    <% end %>
+  </div>
+
+</div>
+
+
+<div>
+  <div>タグ(全<%= @tags.count %>)</div>
+  <div>
+    <%= form_with model: @tag, url: tags_path, method: :post do |f| %>
+      <%= f.text_field :name %>
+      <%= f.submit '追加' %>
+    <% end %>
+  </div>
+  <div>
+    <div>タグ一覧</div>
+    <div>
+      <% @tags.each do |tag| %>
+        <%= link_to tag.name, categories_path(tag_id: tag.id) %>
+        <%= link_to '×', tag_path(tag.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <% if @edit_tag.present? %>
+      <div><%= @edit_tag.id %></div>
+      <div>
+        <%= form_with model: @tag, url: tag_path(@edit_tag.id), method: :patch do |f| %>
+          <%= f.text_field :name %>
+          <%= f.submit '更新' %>
+        <% end %>
+      </div>
+    <% else %>
+      <div>なし</div>
+    <% end %>
+  </div>
+
+</div>
