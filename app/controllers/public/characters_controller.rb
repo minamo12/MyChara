@@ -2,6 +2,8 @@ class Public::CharactersController < ApplicationController
 
   def new
     @character = Character.new
+    @categories = Category.all
+    @tags = Tag.all
   end
 
   def create
@@ -20,7 +22,7 @@ class Public::CharactersController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:name, :customer_id, :explanation)
+    params.require(:character).permit(:name, :customer_id, :explanation, :image, :number_a_image, :number_b_image, :number_c_image, category_ids: [], tag_ids: [])
   end
 
 end

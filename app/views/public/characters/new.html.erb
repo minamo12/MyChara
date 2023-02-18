@@ -18,11 +18,18 @@
     </tr>
     <tr>
       <th>カテゴリ選択</th>
-      <td><%= f.collection_select :category_id, Category.all, :id, :name %></td>
+      <td>
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+        <%= category.label do %>
+          <%= category.check_box %>
+          <%= category.text %>
+        <% end %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>タグ選択</th>
-      <td><%= f.collection_select :tag_id, Tag.all, :id, :name %></td>
+      <td><%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %></td>
     </tr>
     <tr>
       <th>画像</th>

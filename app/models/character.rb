@@ -1,6 +1,8 @@
 class Character < ApplicationRecord
   has_many :characters_and_tags
   has_many :characters_and_categories
+  has_many :tags, through: :characters_and_tags
+  has_many :categories, through: :characters_and_categories
 
   belongs_to :customer
 
