@@ -9,6 +9,20 @@
   </p>
 </div>
 
+<% if @inquiries.count == 0 %>
+<% else %>
+  <div>
+    <% @inquiries.each do |inquiry| %>
+      <%= inquiry.inquiry %>
+      <div>
+        <div>ステータス</div>
+        <div><%= inquiry.content_i18n %></div>
+      </div>
+      </br>
+    <% end %>
+  </div>
+<% end %>
+
 <div>
   <div><%= link_to "まいきゃら一覧", customers_my_chara_path %></div>
   <div><%= link_to "まいきゃら登録", new_character_path %></div>

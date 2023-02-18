@@ -1,0 +1,8 @@
+ja:
+  enums:
+    inquiry:
+      content:
+        account_recovery: "アカウントの復活"
+        delete_account: "アカウントの削除"
+        how_to: "サイトの利用について"
+        other: "その他"

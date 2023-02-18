@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :tags, only: [:index, :create, :update, :destroy]
 
     # inquiries
-    resources :inquiries, only: [:create, :update]
+    resources :inquiries, only: [:new, :create, :update]
   end
 
   # ++++++++++++++++++++++++++++++++++++++++

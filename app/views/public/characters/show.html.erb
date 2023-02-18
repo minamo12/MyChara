@@ -2,6 +2,7 @@
 <div>まいきゃら詳細画面</div>
 
 <div>
+  <div><%= link_to "削除する", character_path(@character.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
   <div><%= link_to "編集する", edit_character_path(@character.id) %></div>
   <div><%= @character.name %></div>
   <div>

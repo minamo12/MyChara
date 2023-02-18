@@ -27,6 +27,12 @@ class Public::CharactersController < ApplicationController
     redirect_to character_path(@character.id)
   end
 
+  def destroy
+    @character = Character.find(params[:id])
+    @character.destroy
+    redirect_to customers_my_chara_path
+  end
+
   private
 
   def character_params
