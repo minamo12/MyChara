@@ -1,2 +1,27 @@
-<h1>Admin::Inquiries#index</h1>
-<p>Find me in app/views/admin/inquiries/index.html.erb</p>
+
+<div>お問い合わせ一覧</div>
+
+<div>
+  <% @inquiries.each do |inquiry| %>
+  <table>
+    <thead>
+      <tr>
+        <th>日時</th>
+        <th>ユーザ名</th>
+        <th>ステータス</th>
+        <th>内容</th>
+        <th>解決</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <td><%= inquiry.customer.name %></td>
+        <td><%= inquiry.customer.is_active %></td>
+        <td><%= inquiry.content_i18n %></td>
+        <td><%= inquiry.solve %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+</div>

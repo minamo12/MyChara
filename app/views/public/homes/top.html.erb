@@ -9,18 +9,21 @@
   </p>
 </div>
 
-<% if @inquiries.count == 0 %>
+<% if customer_signed_in? %>
+  <% if @inquiries.count == 0 %>
+  <% else %>
+    <div>
+      <% @inquiries.each do |inquiry| %>
+        <%= inquiry.inquiry %>
+        <div>
+          <div>ステータス</div>
+          <div><%= inquiry.content_i18n %></div>
+        </div>
+        </br>
+      <% end %>
+    </div>
+  <% end %>
 <% else %>
-  <div>
-    <% @inquiries.each do |inquiry| %>
-      <%= inquiry.inquiry %>
-      <div>
-        <div>ステータス</div>
-        <div><%= inquiry.content_i18n %></div>
-      </div>
-      </br>
-    <% end %>
-  </div>
 <% end %>
 
 <div>
