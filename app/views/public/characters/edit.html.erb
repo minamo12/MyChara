@@ -1,2 +1,10 @@
-<h1>Public::MyCharacters#edit</h1>
-<p>Find me in app/views/public/my_characters/edit.html.erb</p>
+
+<div>まいきゃら編集画面</div>
+
+<div>
+  <%= form_with model: @character, url: character_path(@character.id), method: :patch do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_area :explanation %>
+    <%= f.submit "更新する" %>
+  <% end %>
+</div>

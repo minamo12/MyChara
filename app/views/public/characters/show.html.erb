@@ -1,2 +1,22 @@
-<h1>Public::MyCharacters#show</h1>
-<p>Find me in app/views/public/my_characters/show.html.erb</p>
+
+<div>まいきゃら詳細画面</div>
+
+<div>
+  <div><%= link_to "編集する", edit_character_path(@character.id) %></div>
+  <div><%= @character.name %></div>
+  <div>
+    <% @character.categories.each do |category| %>
+      <%= category.name %>
+    <% end %>
+  </div>
+  <div>
+    <% @character.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+  </div>
+  <div><%= @character.explanation %></div>
+  <div><%= image_tag @character.get_image(300, 300) %></div>
+  <div><%= image_tag @character.get_number_a_image(100, 100) %></div>
+  <div><%= image_tag @character.get_number_b_image(100, 100) %></div>
+  <div><%= image_tag @character.get_number_c_image(100, 100) %></div>
+</div>

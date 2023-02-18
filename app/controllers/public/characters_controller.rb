@@ -14,9 +14,17 @@ class Public::CharactersController < ApplicationController
   end
 
   def show
+    @character = Character.find(params[:id])
   end
 
   def edit
+    @character = Character.find(params[:id])
+  end
+
+  def update
+    @character = Character.find(params[:id])
+    @character.update(character_params)
+    redirect_to character_path(@character.id)
   end
 
   private

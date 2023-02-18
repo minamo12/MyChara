@@ -8,7 +8,7 @@
   <div>まいきゃら一覧<%= @characters.count %></div>
   <div>
     <% @characters.each do |character| %>
-    <div><%= character.name %></div>
+    <div><%= link_to character.name, character_path(character.id) %></div>
     <div><%= image_tag character.get_image(100, 100) %></div>
     <div><%= character.explanation %></div>
     <div>
