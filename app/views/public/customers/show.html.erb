@@ -4,4 +4,11 @@
 <div><%= link_to "ユーザー情報を編集する", edit_customer_path(current_customer.id) %></div>
 
 
-<div>まいきゃら一覧（合計〇キャラ）</div>
+<div>
+  <div>まいきゃら一覧</div>
+  <div>
+    <% @characters.each do |character| %>
+    <div><%= character.name %></div>
+    <% end %>
+  </div>
+</div>

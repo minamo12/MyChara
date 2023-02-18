@@ -1,0 +1,42 @@
+
+<div>まいきゃら新規登録画面</div>
+
+<div>
+  <%= form_with model: @character, url: characters_path, method: :post do |f| %>
+  <table>
+    <tr>
+      <th>名前</th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <th>メイン画像</th>
+      <td><%= f.file_field :image, accept: "image/*" %></td>
+    </tr>
+    <tr>
+      <th>説明文</th>
+      <td><%= f.text_area :explanation %></td>
+    </tr>
+    <tr>
+      <th>カテゴリ選択</th>
+      <td><%= f.collection_select :category_id, Category.all, :id, :name %></td>
+    </tr>
+    <tr>
+      <th>タグ選択</th>
+      <td><%= f.collection_select :tag_id, Tag.all, :id, :name %></td>
+    </tr>
+    <tr>
+      <th>画像</th>
+      <td>
+        <%= f.file_field :number_a_image, accept: "image/*" %>
+        <%= f.file_field :number_b_image, accept: "image/*" %>
+        <%= f.file_field :number_c_image, accept: "image/*" %>
+      </td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><%= f.submit '新規登録' %></td>
+    </tr>
+  </table>
+  <% end %>
+
+</div>

@@ -22,8 +22,8 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw'  => 'customers#withdraw'
 
-    # my_characters
-    resources :my_characters, only: [:show, :create, :edit, :update, :destroy]
+    # characters
+    resources :characters, only: [:new, :show, :create, :edit, :update, :destroy]
 
     # categories
     resources :categories, only: [:index, :create, :update, :destroy]
