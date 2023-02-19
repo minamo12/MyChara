@@ -7,7 +7,6 @@ class Public::InquiriesController < ApplicationController
   def create
     @inquiry = Inquiry.new(inqury_params)
     @inquiry.customer_id = current_customer.id
-    binding.pry
     @inquiry.save
     redirect_to root_path
   end

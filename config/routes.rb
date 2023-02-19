@@ -43,6 +43,8 @@ Rails.application.routes.draw do
 
     # inquiries
     resources :inquiries, only: [:index, :show, :create]
+
+    resources :answers, only: [:create]
   end
 
 end

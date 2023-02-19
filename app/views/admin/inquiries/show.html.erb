@@ -1,2 +1,51 @@
-<h1>Admin::Inquiries#show</h1>
-<p>Find me in app/views/admin/inquiries/show.html.erb</p>
+
+<div>お問い合わせ詳細画面</div>
+
+<div>
+  <div>
+    <lavel>解決</lavel>
+    <%= @inquiry.solve %>
+  </div>
+  <div>
+    <label>日時</label>
+    <%= @inquiry.created_at.strftime('%Y/%m/%d %H:%M') %>
+  </div>
+  <div>
+    <label>ユーザ名</label>
+    <%= @inquiry.customer.name %>
+  </div>
+  <div>
+    <lavel>ID</lavel>
+    <%= @inquiry.customer.id %>
+  </div>
+  <div>
+    <lavel>内容</lavel>
+    <%= @inquiry.content_i18n %>
+  </div>
+  <div>
+    <%= @inquiry.inquiry %>
+  </div>
+</div>
+
+<div>返信内容</div>
+
+<div>
+  <div>内容</div>
+  <% @inquiry.answers.each do |answer| %>
+  </br>
+  ************
+    <%= answer.answer %>
+  ***************
+  </br>
+  <% end %>
+</div>
+
+<div>
+  <div>返信フォーム</div>
+  <%= form_with model: @answer, url: admin_answers_path, method: :post do |f| %>
+    <%= f.text_area :answer %>
+    <%= f.hidden_field :inquiry_id, value: @inquiry.id %>
+    <%= f.hidden_field :customer_id, value: @inquiry.customer.id %>
+    <%= f.submit '返信する' %>
+  <% end %>
+</div>

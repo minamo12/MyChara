@@ -35,4 +35,11 @@
 
   <div>お問い合わせ</div>
 
+  <div>
+    <% @inquiries.each do |inquiry| %>
+      <%= link_to inquiry.inquiry, admin_inquiry_path(inquiry.id) %>
+      </br>
+    <% end %>
+  </div>
+
 </div>

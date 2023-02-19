@@ -2,6 +2,7 @@ class Admin::CustomersController < ApplicationController
 
   def index
     @customers = Customer.all
+    @inquiries = Inquiry.where(solve: 'false')
   end
 
   def update
