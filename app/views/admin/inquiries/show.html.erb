@@ -49,3 +49,9 @@
     <%= f.submit '返信する' %>
   <% end %>
 </div>
+
+<div>
+  <div>削除する</div>
+  <div><%= link_to "削除する", admin_customer_path(@inquiry.customer.id), method: :delete,
+  "data-confirm" => "本当に削除しますか？" %></div>
+</div>

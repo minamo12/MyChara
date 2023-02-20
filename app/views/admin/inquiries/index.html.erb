@@ -16,7 +16,7 @@
     <tbody>
       <tr>
         <td><%= inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-        <td><%= inquiry.customer.name %></td>
+        <td><%= link_to inquiry.customer.name, admin_inquiry_path(inquiry.id) %></td>
         <td><%= inquiry.customer.is_active %></td>
         <td><%= inquiry.content_i18n %></td>
         <td><%= inquiry.solve %></td>

@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     # customers
-    resources :customers, only: [:index, :update]
+    resources :customers, only: [:index, :update, :destroy]
 
     # inquiries
     resources :inquiries, only: [:index, :show, :create]
