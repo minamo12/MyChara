@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
 
     # customers
-    resources :customers, only: [:edit]
+    resources :customers, only: [:edit, :destroy]
     get 'customers/my_chara' => 'customers#show'
     patch 'customers/infomation' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'

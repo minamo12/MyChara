@@ -11,6 +11,12 @@ class Public::InquiriesController < ApplicationController
     redirect_to root_path
   end
 
+  def update
+    @inquiry = Inquiry.find(params[:id])
+    @inquiry.update(inqury_params)
+    redirect_to root_path
+  end
+
   private
 
   def inqury_params

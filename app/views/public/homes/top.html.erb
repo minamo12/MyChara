@@ -19,6 +19,22 @@
           <div>ステータス</div>
           <div><%= inquiry.content_i18n %></div>
         </div>
+        <div>
+          <div>返信内容</div>
+          <div>
+            <% inquiry.answers.each do |answer| %>
+              <%= answer.answer %>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <div>解決したら以下の”解決済み”をクリック</div>
+          <div><%= link_to "解決済み", inquiry_path(inquiry.id, inquiry: {solve: true}), method: :patch %></div>
+        </div>
+        <div>
+          <div>falseなら未解決、trueなら解決済み</div>
+          <div><%= inquiry.solve %></div>
+        </div>
         </br>
       <% end %>
     </div>
