@@ -17,7 +17,7 @@
         <!--ロゴ-->
         <h1><%= link_to "まいきゃら", root_path, class: 'logo' %></h1>
 
-        <div class="list">
+        <div class="width-100p">
 
           <ul>
             <!--管理者ログイン-->
@@ -45,7 +45,9 @@
       </div>
     </header>
 
-    <main><%= yield %></main>
+    <main>
+      <div class="container"><%= yield %></div>
+    </main>
 
     <footer>
       <div>トップ</div>
