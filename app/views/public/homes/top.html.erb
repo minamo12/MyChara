@@ -1,6 +1,6 @@
-<div>
-  <div>まいきゃら</div>
-  <p>
+<div class="flex space-50">
+  <div class="font-40 underline">まいきゃら</div>
+  <p class="left-space-30">
     オリジナルキャラクター「まいきゃら」を</br>
     カテゴリやタグ、複数の画像登録で</br>
     管理できるサイトです。</br>
@@ -9,40 +9,64 @@
   </p>
 </div>
 
+
+<!--会員ログイン時表示-->
 <% if customer_signed_in? %>
-  <% if @inquiries.count == 0 %>
-  <% else %>
-    <div>
-      <% @inquiries.each do |inquiry| %>
-        <%= inquiry.inquiry %>
-        <div>
-          <div>ステータス</div>
-          <div><%= inquiry.content_i18n %></div>
-        </div>
-        <div>
-          <div>返信内容</div>
-          <div>
-            <% inquiry.answers.each do |answer| %>
-              <%= answer.answer %>
-            <% end %>
-          </div>
-        </div>
-        <div>
-          <div>解決したら以下の”解決済み”をクリック</div>
-          <div><%= link_to "解決済み", inquiry_path(inquiry.id, inquiry: {solve: true}), method: :patch %></div>
-        </div>
-        <div>
-          <div>falseなら未解決、trueなら解決済み</div>
-          <div><%= inquiry.solve %></div>
-        </div>
-        </br>
-      <% end %>
+
+<div class="width-100p center">
+
+  <div class="flex center width-80p">
+    <div class="text-center"><%= link_to "まいきゃら一覧", customers_my_chara_path, class: 'padding-20 outline-radius' %></div>
+    <div class="text-center"><%= link_to "まいきゃら登録", new_character_path, class: 'padding-20 outline-radius' %></div>
+    <div class="text-center">
+      <%= link_to "タグ・カテゴリ編集", categories_path, class: 'padding-20 outline-radius' %>
     </div>
-  <% end %>
-<% else %>
+  </div>
+
+  <div>
+
+    <!--お問い合わせをした場合に表示-->
+    <% if @inquiries.count == 0 %>
+    <% else %>
+      <div>
+        <% @inquiries.each do |inquiry| %>
+          <%= inquiry.inquiry %>
+          <div>
+            <div>ステータス</div>
+            <div><%= inquiry.content_i18n %></div>
+          </div>
+          <div>
+            <div>返信内容</div>
+            <div>
+              <% inquiry.answers.each do |answer| %>
+                <%= answer.answer %>
+              <% end %>
+            </div>
+          </div>
+          <div>
+            <div>解決したら以下の”解決済み”をクリック</div>
+            <div><%= link_to "解決済み", inquiry_path(inquiry.id, inquiry: {solve: true}), method: :patch %></div>
+          </div>
+          <div>
+            <div>falseなら未解決、trueなら解決済み</div>
+            <div><%= inquiry.solve %></div>
+          </div>
+          </br>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <!--会員未ログイン時表示-->
+  <% else %>
+
+  <div class="flex center width-50p">
+    <div class="text-center"><%= link_to "ログイン", new_customer_session_path, class: 'btn btn-success padding-20' %></div>
+    <div class="text-center"><%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-primary top-btn padding-20' %></div>
+  </div>
+
+</div>
+
 <% end %>
 
-<div>
-  <div><%= link_to "まいきゃら一覧", customers_my_chara_path %></div>
-  <div><%= link_to "まいきゃら登録", new_character_path %></div>
-</div>
