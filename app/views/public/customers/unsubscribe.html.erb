@@ -1,8 +1,23 @@
 
-<div>退会画面</div>
+<div class="space-50">
+  <div class="font-20 font-weight space-10">本当に退会しますか？</div>
+  <div>
+    退会すると、まいきゃらが閲覧できなくなります。</br>
+    アカウント名とIDを控えておくことで復活できる<span class="green">「退会」</span>と</br>
+    データを全て削除し、</br>
+    復活することのできない<span class="red">「削除」</span>があります。</br>
+    いずれかを選んでください。
+  </div>
+</div>
 
-<%= link_to "退会する", customers_withdraw_path(customer: {is_active: false}),
-  method: :patch, "data-confirm" => "本当に退会しますか？" %>
+<div class="width-60p center flex">
+  <div class="text-center"><%= link_to "退会する", customers_withdraw_path(customer: {is_active: false}),
+  method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-success" %></div>
 
-<%= link_to "削除する", customer_path(current_customer.id), method: :delete,
-  "data-confirm" => "本当に削除しますか？" %>
+  <div class="text-center"><%= link_to "退会しない", root_path, class: "btn btn-primary" %></div>
+
+  <div class="text-center"><%= link_to "削除する", customer_path(current_customer.id), method: :delete,
+  "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></div>
+</div>
+
+

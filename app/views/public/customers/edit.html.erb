@@ -1,16 +1,21 @@
 
-<div>ユーザー情報編集画面</div>
-
 <div>
   <div>
     <%= form_with model: @customer, url: customers_infomation_path, method: :patch do |f| %>
-    <div>
-      <span>名前</span>
-      <%= f.text_field :name %>
-      <%= f.submit '変更' %>
-    </div>
+    <table>
+      <tr>
+        <th>ユーザ名</th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= f.submit '変更', class: 'btn btn-success' %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= link_to "退会する", customers_unsubscribe_path, class: 'btn btn-danger top-30' %></td>
+      </tr>
+    </table>
     <% end %>
   </div>
 </div>
-
-<div><%= link_to "退会する", customers_unsubscribe_path %></div>

@@ -6,13 +6,10 @@
 </p>
 
 <% if admin_signed_in? %>
-  <div class="red space_10">
+  <div class="red space-10">
     管理者としてログインしています。</br>ログアウトをしてください。
   </div>
 <% end %>
-
-
-<div class="title">ログイン</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 

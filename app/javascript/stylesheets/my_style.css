@@ -22,6 +22,10 @@
 
 /*font*/
 
+.font-20 {
+  font-size: 20px;
+}
+
 .font-40 {
   font-size: 40px;
 }
@@ -35,6 +39,10 @@
   margin-bottom: 50px;
 }
 
+.space-10 {
+  margin-bottom: 10px;
+}
+
 
 .left-space-10 {
   margin-left: 10px;
@@ -42,6 +50,15 @@
 
 .left-space-30 {
   margin-left: 30px;
+}
+
+
+.top-30 {
+  margin-top: 30px;
+}
+
+.top-60 {
+  margin-top: 60px;
 }
 
 
@@ -66,9 +83,21 @@
   border: solid 1px;
 }
 
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
 .outline-radius {
   border: solid 1px;
   border-radius: 8px;
+}
+
+.no-deco {
+  font-weight: initial;
 }
 
 /********************//********************/
@@ -86,6 +115,10 @@
 .text-center {
   margin: 0 auto;
   text-align: center;
+}
+
+.text-right-send {
+  text-align: right;
 }
 
 /********************//********************/
@@ -143,5 +176,10 @@ ul {
   justify-content: flex-end;
   margin: 30px;
 }
+
+th, td {
+  padding: 10px 5px;
+}
+
 
 /********************//********************/
