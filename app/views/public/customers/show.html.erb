@@ -1,26 +1,39 @@
 
-<div>まいきゃら一覧（会員詳細画面 ）</div>
+<div class="text-right-send space-10"><%= link_to "ユーザー情報を編集する", edit_customer_path(current_customer.id) %></div>
 
-<div><%= link_to "ユーザー情報を編集する", edit_customer_path(current_customer.id) %></div>
+<div class="space-20 title">まいきゃら一覧（合計<%= @characters.count %>キャラ）</div>
 
-
-<div>
-  <div>まいきゃら一覧<%= @characters.count %></div>
+<div class="width-100p">
   <div>
     <% @characters.each do |character| %>
-    <div><%= link_to character.name, character_path(character.id) %></div>
-    <div><%= image_tag character.get_image(100, 100) %></div>
-    <div><%= character.explanation %></div>
-    <div>
-      <% character.categories.each do |category| %>
-        <%= category.name %>
+
+      <div class="outline width-30p padding-5">
+        <%= link_to(character_path(character.id)) do %>
+
+        <div class="font-20 space-5"><%= character.name %></div>
+
+        <div class="flex">
+          <div>
+            <div class="right-space-5"><%= image_tag character.get_image(100, 100) %></div>
+          </div>
+
+          <div>
+            <div class="space-10">
+              <% character.categories.each do |category| %>
+                <div class="outline-radius-3 margin-2"><%= category.name %></div>
+              <% end %>
+            </div>
+            <div>
+              <% character.tags.each do |tag| %>
+                <span class="outline-radius-3 margin-2"><%= tag.name %></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </div>
-    <div>
-      <% character.tags.each do |tag| %>
-        <%= tag.name %>
-      <% end %>
-    </div>
+      </div>
+
+
     <% end %>
   </div>
 </div>
