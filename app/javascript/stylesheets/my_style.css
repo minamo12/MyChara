@@ -21,10 +21,18 @@
   width: 30%;
 }
 
+.width-250 {
+  width: 250px;
+}
+
 /********************//********************/
 
 
 /*font*/
+
+.font-15 {
+  font-size: 15px;
+}
 
 .font-20 {
   font-size: 20px;
@@ -173,6 +181,18 @@
 
 .text-right-send {
   text-align: right;
+}
+
+.column-3 {
+  column-count: 3;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 /********************//********************/
