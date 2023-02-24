@@ -30,12 +30,20 @@
 
 /*font*/
 
+.font-13 {
+  font-size: 13px;
+}
+
 .font-15 {
   font-size: 15px;
 }
 
 .font-20 {
   font-size: 20px;
+}
+
+.font-25 {
+  font-size: 25px;
 }
 
 .font-40 {
@@ -69,9 +77,16 @@
 
 /**/
 
+.left-space-40 {
+  margin-left: 40px;
+}
 
 .left-space-30 {
   margin-left: 30px;
+}
+
+.left-space-20 {
+  margin-left: 20px;
 }
 
 .left-space-10 {
@@ -82,6 +97,10 @@
 
 .right-space-5 {
   margin-right: 5px;
+}
+
+.right-space-15 {
+  margin-right: 15px;
 }
 
 /**/
@@ -96,6 +115,10 @@
 
 /**/
 
+.padding-bottom-12 {
+  padding-bottom: 12px;
+}
+
 .padding-20 {
   padding: 20px;
 }
@@ -104,7 +127,15 @@
   padding: 5px;
 }
 
+.padding-3 {
+  padding: 3px;
+}
+
 /**/
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
 
 .margin-5 {
   margin: 5px;
@@ -181,6 +212,14 @@
 
 .text-right-send {
   text-align: right;
+}
+
+.text-bottom-send {
+  align-items: flex-end;
+}
+
+.text-middle-send {
+  vertical-align: middle;
 }
 
 .column-3 {

@@ -1,6 +1,8 @@
 
 <div>まいきゃら編集画面</div>
 
+<div><%= link_to "削除する", character_path(@character.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+
 <div>
   <%= form_with model: @character, url: character_path(@character.id), method: :patch do |f| %>
     <%= f.text_field :name %>

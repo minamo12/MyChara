@@ -1,23 +1,38 @@
 
-<div>まいきゃら詳細画面</div>
+<div class="width-100p">
 
-<div>
-  <div><%= link_to "削除する", character_path(@character.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
-  <div><%= link_to "編集する", edit_character_path(@character.id) %></div>
-  <div><%= @character.name %></div>
-  <div>
-    <% @character.categories.each do |category| %>
-      <%= category.name %>
+  <div class="font-25">
+    <%= link_to(edit_character_path(@character.id)) do %>
+      <i class="fa-regular fa-pen-to-square"></i>
     <% end %>
   </div>
-  <div>
-    <% @character.tags.each do |tag| %>
-      <%= tag.name %>
-    <% end %>
+
+  <div class="flex text-bottom-send space-30">
+
+    <div class="font-40 underline"><%= @character.name %></div>
+
+    <div class="padding-bottom-12 left-space-40">
+      <% @character.categories.each do |category| %>
+        <span class="outline-radius-3 margin-2 nowrap font-15 padding-3"><%= category.name %></span>
+      <% end %>
+    </div>
+
+    <div class="padding-bottom-12 left-space-20">
+      <% @character.tags.each do |tag| %>
+        <span class="outline-radius-3 margin-2 nowrap padding-3 font-13"><%= tag.name %></span>
+      <% end %>
+    </div>
   </div>
-  <div><%= @character.explanation %></div>
-  <div><%= image_tag @character.get_image(300, 300) %></div>
-  <div><%= image_tag @character.get_number_a_image(100, 100) %></div>
-  <div><%= image_tag @character.get_number_b_image(100, 100) %></div>
-  <div><%= image_tag @character.get_number_c_image(100, 100) %></div>
+
+  <div class="flex space-20">
+    <div><%= image_tag @character.get_image(300, 300) %></div>
+    <div class="left-space-40"><%= safe_join(@character.explanation.split("\n"),tag(:br)) %></div>
+  </div>
+
+  <div class="flex wrap">
+    <div class="margin-5"><%= image_tag @character.get_number_a_image(100, 100) %></div>
+    <div class="margin-5"><%= image_tag @character.get_number_b_image(100, 100) %></div>
+    <div class="margin-5"><%= image_tag @character.get_number_c_image(100, 100) %></div>
+  </div>
+
 </div>
