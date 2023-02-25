@@ -4,7 +4,7 @@
   <%= form_with model: @character, url: characters_path, method: :post do |f| %>
   <table>
     <tr>
-      <th>名前</th>
+      <th class="width-150">名前</th>
       <td><%= f.text_field :name %></td>
     </tr>
     <tr>
@@ -16,19 +16,30 @@
       <td><%= f.text_area :explanation %></td>
     </tr>
     <tr>
-      <th>カテゴリ選択</th>
+      <th>カテゴリ</th>
       <td>
         <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+        <span class="margin-2 nowrap">
         <%= category.label do %>
           <%= category.check_box %>
-          <%= category.text %>
+          <span class="underline"><%= category.text %></span>
         <% end %>
+        </span>
         <% end %>
       </td>
     </tr>
     <tr>
-      <th>タグ選択</th>
-      <td><%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %></td>
+      <th>タグ</th>
+      <td>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <span class="margin-2 nowrap">
+        <%= tag.label do %>
+          <%= tag.check_box %>
+          <span class="underline"><%= tag.text %></span>
+        <% end %>
+        </span>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>画像</th>
@@ -46,3 +57,31 @@
   <% end %>
 
 </div>
+
+
+<div>
+  <div>カテゴリを追加する</div>
+  <%= form_with model: @category, url: categories_path(chara: 1), method: :post do |f| %>
+    <span>
+      <%= f.text_field :name %>
+      <%= button_tag type: "submit" do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
+    </span>
+  <% end %>
+</div>
+
+<div>
+  <div>タグを追加する</div>
+  <%= form_with model: @tag, url: tags_path(chara: 1), method: :post do |f| %>
+    <span>
+      <%= f.text_field :name %>
+      <%= button_tag type: "submit" do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
+    </span>
+  <% end %>
+</div>
+
+
+

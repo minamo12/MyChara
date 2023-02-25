@@ -25,7 +25,11 @@ class Public::CategoriesController < ApplicationController
     @category = Category.new(category_params)
     @category.customer_id = current_customer.id
     @category.save
-    redirect_to categories_path
+    if params[:chara]
+      redirect_to new_character_path
+    else
+      redirect_to categories_path
+    end
   end
 
   def destroy

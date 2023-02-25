@@ -4,6 +4,8 @@ class Public::CharactersController < ApplicationController
     @character = Character.new
     @categories = Category.all
     @tags = Tag.all
+    @category = Category.new
+    @tag = Tag.new
   end
 
   def create
