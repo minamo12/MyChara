@@ -99,18 +99,26 @@
 
 /**/
 
+.right-space-15 {
+  margin-right: 15px;
+}
+
 .right-space-5 {
   margin-right: 5px;
 }
 
-.right-space-15 {
-  margin-right: 15px;
+.right-space-7 {
+  margin-right: 7px;
 }
 
 /**/
 
 .top-60 {
   margin-top: 60px;
+}
+
+.top-10 {
+  margin-top: 10px;
 }
 
 .top-30 {
@@ -274,6 +282,13 @@
   font-weight: bold;
   font-size: 22px;
   border-bottom: 1px solid;
+}
+
+.pop-up {
+  background-color: #eee;
+  border: solid 1px;
+  border-color: gray;
+  position: absolute;
 }
 
 /********************//********************/
