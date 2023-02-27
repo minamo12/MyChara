@@ -1,12 +1,105 @@
 
-<div>まいきゃら編集画面</div>
+<div class="title">まいきゃら編集画面</div>
 
-<div><%= link_to "削除する", character_path(@character.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+<div class="width-80p">
+  <div class="text-right-send"><%= link_to "削除する", character_path(@character.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger font-20" %></div>
+</div>
 
-<div>
+<div class="space-30">
   <%= form_with model: @character, url: character_path(@character.id), method: :patch do |f| %>
-    <%= f.text_field :name %>
-    <%= f.text_area :explanation %>
-    <%= f.submit "更新する" %>
+  <table>
+    <tr>
+      <th class="width-150">名前</th>
+      <td><%= f.text_field :name, :required => true %></td>
+    </tr>
+    <tr>
+      <th>メイン画像</th>
+      <td>
+        <div class="flex">
+          <div><%= image_tag @character.get_image(80, 80) %></div>
+          <div><i class="fa-solid fa-arrow-right"></i></div>
+          <div><%= f.file_field :image, accept: "image/*" %></div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>説明文</th>
+      <td><%= f.text_area :explanation %></td>
+    </tr>
+    <tr>
+      <th>カテゴリ</th>
+      <td>
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+        <span class="margin-2 nowrap">
+        <%= category.label do %>
+          <%= category.check_box %>
+          <span class="underline"><%= category.text %></span>
+        <% end %>
+        </span>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>タグ</th>
+      <td>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <span class="margin-2 nowrap">
+        <%= tag.label do %>
+          <%= tag.check_box %>
+          <span class="underline"><%= tag.text %></span>
+        <% end %>
+        </span>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>画像</th>
+      <td>
+        <div class="space-10 flex">
+          <div><%= image_tag @character.get_number_a_image(80, 80) %></div>
+          <div><i class="fa-solid fa-arrow-right"></i></div>
+          <div><%= f.file_field :number_a_image, accept: "image/*" %></div>
+        </div>
+        <div class="space-10 flex">
+          <div><%= image_tag @character.get_number_b_image(80, 80) %></div>
+          <div><i class="fa-solid fa-arrow-right"></i></div>
+          <div><%= f.file_field :number_b_image, accept: "image/*" %></div>
+        </div>
+        <div class="space-10 flex">
+          <div><%= image_tag @character.get_number_c_image(80, 80) %></div>
+          <div><i class="fa-solid fa-arrow-right"></i></div>
+          <div><%= f.file_field :number_c_image, accept: "image/*" %></div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><%= f.submit '新規登録', class: "btn btn-success" %></td>
+    </tr>
+  </table>
+  <% end %>
+</div>
+
+<div class="space-10">
+  <div>カテゴリを追加する</div>
+  <%= form_with model: @category, url: categories_path(character_id: @character.id), method: :post do |f| %>
+    <span>
+      <%= f.text_field :name, :required => true %>
+      <%= button_tag type: "submit" do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
+    </span>
+  <% end %>
+</div>
+
+<div class="space-10">
+  <div>タグを追加する</div>
+  <%= form_with model: @tag, url: tags_path(character_id: @character.id), method: :post do |f| %>
+    <span>
+      <%= f.text_field :name, :required => true %>
+      <%= button_tag type: "submit" do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
+    </span>
   <% end %>
 </div>

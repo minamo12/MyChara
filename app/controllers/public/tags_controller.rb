@@ -6,6 +6,8 @@ class Public::TagsController < ApplicationController
     @tag.save
     if params[:chara]
       redirect_to new_character_path
+    elsif params[:character_id]
+      redirect_to edit_character_path(id: params[:character_id])
     else
       redirect_to categories_path
     end

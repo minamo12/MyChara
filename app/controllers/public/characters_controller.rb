@@ -21,6 +21,8 @@ class Public::CharactersController < ApplicationController
 
   def edit
     @character = Character.find(params[:id])
+    @category = Category.new
+    @tag = Tag.new
   end
 
   def update
