@@ -31,6 +31,14 @@
 
 /********************//********************/
 
+/*height*/
+
+.height-80 {
+  height: 80px;
+}
+
+/********************//********************/
+
 
 /*font*/
 
@@ -126,6 +134,10 @@
 }
 
 /**/
+
+.padding-20-0 {
+  padding: 20px 0;
+}
 
 .padding-bottom-12 {
   padding-bottom: 12px;
@@ -232,6 +244,10 @@
 
 .text-middle-send {
   vertical-align: middle;
+}
+
+.text-aligin-center {
+  text-align: center;
 }
 
 .column-3 {
