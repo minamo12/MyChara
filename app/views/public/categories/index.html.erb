@@ -1,7 +1,7 @@
 
 <div class="title">カテゴリ・タグ管理</div>
 
-<div class="space-50">
+<div class="space-70">
 
   <div class="space-20 flex">
     <div class="left-space-20 font-20">カテゴリ(全<%= @categories.count %>個)</div>
@@ -20,7 +20,7 @@
     <% end %>
   </div>
 
-  <div class="space-30">
+  <div class="space-70">
     <% if @edit_category.present? %>
     <div class="pop-up padding-5 top-10">
       <div class="width-100p flex">
@@ -43,35 +43,45 @@
 </div>
 
 
-<div>
-  <div>タグ(全<%= @tags.count %>個)</div>
-  <div>
-    <%= form_with model: @tag, url: tags_path, method: :post do |f| %>
-      <%= f.text_field :name %>
-      <%= f.submit '追加' %>
-    <% end %>
-  </div>
-  <div>
-    <div>タグ一覧</div>
-    <div>
-      <% @tags.each do |tag| %>
-        <%= link_to tag.name, categories_path(tag_id: tag.id) %>
-        <%= link_to '×', tag_path(tag.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+
+<div class="space-30">
+  <div class="space-20 flex">
+    <div class="left-space-20 font-20">タグ(全<%= @tags.count %>個)</div>
+    <div class="left-space-20">
+      <%= form_with model: @tag, url: tags_path, method: :post do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit '追加' %>
       <% end %>
     </div>
   </div>
 
   <div>
+    <div>
+      <% @tags.each do |tag| %>
+        <span class="margin-2 nowrap underline"><%= link_to tag.name, categories_path(tag_id: tag.id) %></span>
+        <span class="right-space-7"><%= link_to '×', tag_path(tag.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></span>
+      <% end %>
+    </div>
+  </div>
+
+
+    <div class="space-30">
     <% if @edit_tag.present? %>
-      <div><%= @edit_tag.id %></div>
+    <div class="pop-up padding-5 top-10">
+      <div class="width-100p flex">
+        <div class="right-space-15 space-5">
+        <span class="underline"><%= @edit_tag.name %></span>を編集する
+        </div>
+        <div class="right-send"><%= link_to "×閉じる", categories_path %></div>
+      </div>
       <div>
-        <%= form_with model: @tag, url: tag_path(@edit_tag.id), method: :patch do |f| %>
+        <%= form_with model: @tag, url: category_path(@edit_tag.id), method: :patch do |f| %>
           <%= f.text_field :name %>
           <%= f.submit '更新' %>
         <% end %>
       </div>
     <% else %>
+    </div>
     <% end %>
   </div>
-
-</div>
