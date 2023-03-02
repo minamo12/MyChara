@@ -2,7 +2,7 @@
   <div class="font-40 underline">まいきゃら</div>
   <p class="left-space-30">
     オリジナルキャラクター「まいきゃら」を</br>
-    カテゴリやタグ、複数の画像登録で</br>
+    カテゴリやタグ、最大4つの画像登録で</br>
     管理できるサイトです。</br>
     ぜひ創作の手助けにご利用ください。</br>
     ※登録にはアカウント登録が必要です。
@@ -10,6 +10,7 @@
 </div>
 
 
+<div>
 <!--会員ログイン時表示-->
 <% if customer_signed_in? %>
 
@@ -24,39 +25,45 @@
   </div>
 
   <div>
-
     <!--お問い合わせをした場合に表示-->
     <% if @inquiries.count == 0 %>
     <% else %>
-      <div>
+
+      <div class="top-60">
         <% @inquiries.each do |inquiry| %>
-          <%= inquiry.inquiry %>
-          <div>
-            <div>ステータス</div>
-            <div><%= inquiry.content_i18n %></div>
-          </div>
-          <div>
-            <div>返信内容</div>
+          <div class="outline-radius">
+            <table>
+              <tr>
+                <th>ユーザ名</th>
+                <td><%= inquiry.customer.name %></td>
+              </tr>
+              <tr>
+                <th>内容</th>
+                <td><%= inquiry.content_i18n %></td>
+              </tr>
+              <tr>
+                <th>お問い合わせ詳細</th>
+                <td><%= inquiry.inquiry %></td>
+              </tr>
+              <tr>
+                <th>返信内容</th>
+              </tr>
+            </table>
+
             <div>
+              <% if inquiry.answers.any? %>
               <% inquiry.answers.each do |answer| %>
-                <%= answer.answer %>
+                <div><%= answer.answer %></div>
+              <% end %>
+              </br>
+              <div>お問い合わせ内容が解決しましたら✔をクリックして下さい。</div>
+              <div><%= link_to "✔", inquiry_path(inquiry.id, inquiry: {solve: true}), method: :patch %></div>
               <% end %>
             </div>
           </div>
-          <div>
-            <div>解決したら以下の”解決済み”をクリック</div>
-            <div><%= link_to "解決済み", inquiry_path(inquiry.id, inquiry: {solve: true}), method: :patch %></div>
-          </div>
-          <div>
-            <div>falseなら未解決、trueなら解決済み</div>
-            <div><%= inquiry.solve %></div>
-          </div>
-          </br>
+        <% end %>
         <% end %>
       </div>
-    <% end %>
-
-  </div>
 
   <!--会員未ログイン時表示-->
   <% else %>
@@ -66,7 +73,7 @@
     <div class="text-center"><%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-primary top-btn padding-20' %></div>
   </div>
 
-</div>
-
 <% end %>
+
+</div>
 
