@@ -109,6 +109,10 @@
   margin-left: 10px;
 }
 
+.left-space-5 {
+  margin-left: 5px;
+}
+
 /**/
 
 .right-space-15 {
@@ -264,6 +268,21 @@
 
 .nowrap {
   white-space: nowrap;
+}
+
+/********************//********************/
+
+/*ポップアップ*/
+
+.info-text {
+  background-color: #EEE;
+  border: solid 1px;
+  display: none;
+}
+
+.info:hover + .info-text{
+  position: absolute;
+  display: block;
 }
 
 /********************//********************/
