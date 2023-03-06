@@ -1,45 +1,75 @@
 
 <div>
-
-  <div>会員一覧</div>
+  <div class="title">会員一覧</div>
   <div>
     <% @customers.each do |customer| %>
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>ユーザ名</th>
-            <th>ステータス</th>
-            <th colspan="1"></th>
+            <th class="outline text-center">ID</th>
+            <th class="outline text-center">ユーザ名</th>
+            <th class="outline text-center">ステータス</th>
+            <th class="outline text-center">変更</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><%= customer.id %></td>
-            <td><%= link_to customer.name %></td>
-            <td>
+            <td class="outline text-center"><%= customer.id %></td>
+            <td class="outline text-center"><%= customer.name %></td>
+            <td class="outline text-center">
+              <div>
               <% if customer.is_active %>
-                <div>現在　有効</div>
+                <div>有効</div>
+              <% else %>
+                <div>退会</div>
+              <% end %>
+              </div>
+            </td>
+            <td class="outline text-center">
+              <div>
+              <% if customer.is_active %>
                 <div><%= link_to "退会にする", admin_customer_path(customer.id, customer:{is_active: false}), method: :patch %></div>
               <% else %>
-                <div>現在　退会</div>
                 <div><%= link_to "有効にする", admin_customer_path(customer.id, customer:{is_active: true}), method: :patch %></div>
               <% end %>
+              </div>
             </td>
-            <td></td>
           </tr>
         </tbody>
       </table>
     <% end %>
   </div>
+</div>
 
-  <div>お問い合わせ</div>
 
+<div>
+  <div class="title top-60">未解決のお問い合わせ(全<%= @inquiries.count %>件)</div>
   <div>
     <% @inquiries.each do |inquiry| %>
-      <%= link_to inquiry.inquiry, admin_inquiry_path(inquiry.id) %>
-      </br>
+    <div>
+      <table class="outline padding-5">
+        <tr>
+          <th>ユーザー名</th>
+          <td><%= inquiry.customer.name %></td>
+        </tr>
+        <tr>
+          <th class="text-center">日時</th>
+          <td><%= inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        </tr>
+        <tr>
+          <th class="text-center">内容</th>
+          <td><%= inquiry.content_i18n %></td>
+        </tr>
+        <tr>
+          <th class="text-center">お問い合わせ詳細</th>
+          <td><%= inquiry.inquiry %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td class="text-center"><%= link_to "返信する", admin_inquiry_path(inquiry.id), class: "btn btn-success" %></td>
+        </tr>
+      </table>
+    </div>
     <% end %>
   </div>
-
 </div>
