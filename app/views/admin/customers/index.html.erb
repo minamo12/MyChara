@@ -42,12 +42,12 @@
 </div>
 
 
-<div>
+<div class="width-500">
   <div class="title top-60">未解決のお問い合わせ(全<%= @inquiries.count %>件)</div>
   <div>
     <% @inquiries.each do |inquiry| %>
-    <div>
-      <table class="outline padding-5">
+    <div class="outline padding-5">
+      <table>
         <tr>
           <th>ユーザー名</th>
           <td><%= inquiry.customer.name %></td>
