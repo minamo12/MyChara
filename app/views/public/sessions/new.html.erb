@@ -16,11 +16,11 @@
   <table class="no-deco">
     <tr>
       <th class="text-right-send sign-up-item">ユーザ名</th>
-      <td><%= f.text_field :name, autofocus: true, autocomplete: "name" %></td>
+      <td><%= f.text_field :name, autofocus: true, autocomplete: "name", :required => true %></td>
     </tr>
     <tr>
       <th class="text-right-send sign-up-item">パスワード</th>
-      <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+      <td><%= f.password_field :password, autocomplete: "new-password", :required => true %></td>
     </tr>
     <tr>
       <th></th>
@@ -31,7 +31,7 @@
     </tr>
     <tr>
       <th></th>
-      <td>新規登録は<%= render "public/shared/links" %>から</td>
+      <td>新規登録は<span class="underline font-weight"><%= render "public/shared/links" %></span>から</td>
     </tr>
   </table>
 

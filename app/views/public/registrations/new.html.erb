@@ -10,15 +10,15 @@
   <table class="no-deco">
     <tr>
       <th class="text-right-send sign-up-item">ユーザ名</th>
-      <td><%= f.text_field :name, autofocus: true, autocomplete: "name" %></td>
+      <td><%= f.text_field :name, autofocus: true, autocomplete: "name", :required => true %></td>
     </tr>
     <tr>
       <th class="text-right-send">パスワード</th>
-      <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+      <td><%= f.password_field :password, autocomplete: "new-password", :required => true %></td>
     </tr>
     <tr>
       <th class="text-right-send">パスワード(確認用)</th>
-      <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+      <td><%= f.password_field :password_confirmation, autocomplete: "new-password", :required => true %></td>
     </tr>
     <tr>
       <th></th>

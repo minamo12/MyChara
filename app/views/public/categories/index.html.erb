@@ -7,7 +7,7 @@
     <div class="left-space-20 font-20">カテゴリ(全<%= @categories.count %>個)</div>
     <div class="left-space-20">
       <%= form_with model: @category, url: categories_path, method: :post do |f| %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, :required => true %>
         <%= f.submit '追加' %>
       <% end %>
     </div>
@@ -31,7 +31,7 @@
       </div>
       <div>
         <%= form_with model: @category, url: category_path(@edit_category.id), method: :patch do |f| %>
-          <%= f.text_field :name %>
+          <%= f.text_field :name, :required => true %>
           <%= f.submit '更新' %>
         <% end %>
       </div>
@@ -50,7 +50,7 @@
     <div class="left-space-20 font-20">タグ(全<%= @tags.count %>個)</div>
     <div class="left-space-20">
       <%= form_with model: @tag, url: tags_path, method: :post do |f| %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, :required => true %>
         <%= f.submit '追加' %>
       <% end %>
     </div>
@@ -77,7 +77,7 @@
       </div>
       <div>
         <%= form_with model: @tag, url: category_path(@edit_tag.id), method: :patch do |f| %>
-          <%= f.text_field :name %>
+          <%= f.text_field :name, :required => true %>
           <%= f.submit '更新' %>
         <% end %>
       </div>
