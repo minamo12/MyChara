@@ -29,9 +29,9 @@
             <td class="outline text-center">
               <div>
               <% if customer.is_active %>
-                <div><%= link_to "退会にする", admin_customer_path(customer.id, customer:{is_active: false}), method: :patch, class: "btn btn-primary" %></div>
+                <div><%= link_to "退会にする", admin_customer_path(customer.id, customer:{is_active: false}), method: :patch, "data-confirm" => "退会にしますか？", class: "btn btn-primary" %></div>
               <% else %>
-                <div><%= link_to "有効にする", admin_customer_path(customer.id, customer:{is_active: true}), method: :patch, class: "btn btn-primary" %></div>
+                <div><%= link_to "有効にする", admin_customer_path(customer.id, customer:{is_active: true}), method: :patch, "data-confirm" => "有効にしますか？", class: "btn btn-primary" %></div>
               <% end %>
               </div>
             </td>
@@ -46,14 +46,22 @@
 </div>
 
 
-<div class="width-500">
-  <div class="title top-60">未解決のお問い合わせ(全<%= @inquiries.count %>件)</div>
+<div class="width-500 top-60">
+
+  <div class="title">未解決のお問い合わせ(全<%= @inquiries.count %>件)</div>
+
+  <% if @inquiries.count == 0 %>
+
+  <div>現在、未解決のお問い合わせはありません。</div>
+
+  <% else %>
+
   <div>
     <% @inquiries.each do |inquiry| %>
     <div class="outline padding-5 space-20">
       <table>
         <tr>
-          <th>ユーザー名</th>
+          <th class="text-center">ユーザー名</th>
           <td><%= inquiry.customer.name %></td>
         </tr>
         <tr>
@@ -76,4 +84,5 @@
     </div>
     <% end %>
   </div>
+  <% end %>
 </div>

@@ -12,6 +12,7 @@
         <th class="outline text-center">内容</th>
         <th class="outline text-center">解決</th>
         <th class="outline text-center" colspan="1"></th>
+        <th class="outline text-center" colspan="1"></th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +24,13 @@
         <td class="outline text-center"><%= inquiry.content_i18n %></td>
         <td class="outline text-center"><%= inquiry.solve ? '解決済み' : '未解決' %></td>
         <td class="outline text-center"><%= link_to "返信する", admin_inquiry_path(inquiry.id), class: "btn btn-success" %></td>
+        <td class="outline text-center">
+          <% if inquiry.solve %>
+            <%= link_to "未解決にする", inquiry_path(inquiry.id, inquiry: {solve: false}, inquiry_index:1 ), method: :patch,"data-confirm" => "「未解決」にしますか？", class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "解決済みにする", inquiry_path(inquiry.id, inquiry: {solve: true}, inquiry_index:1), method: :patch,"data-confirm" => "「解決済み」にしますか？", class: "btn btn-warning" %>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>

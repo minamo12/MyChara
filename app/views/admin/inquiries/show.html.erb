@@ -1,45 +1,57 @@
 
 <div class="title">お問い合わせ詳細画面</div>
 
+
+<div class="font-weight underline"><%= @inquiry.solve ? '解決済' : '未解決' %></div>
+
+<div class="flex space-50">
+<!--お問い合わせ内容-->
 <div>
   <div>
-    <lavel>解決</lavel>
-    <%= @inquiry.solve ? '済' : '未' %>
-  </div>
-  <div>
-    <lavel>問い合わせ日時</lavel>
-    <%= @inquiry.created_at.strftime('%Y/%m/%d %H:%M') %>
-  </div>
-</div>
-
-
-<!--お問い合わせ内容-->
-<div class="width-40p">
-  <div class="outline-radius padding-5">
-
     <div>
-      <label class="col-4">ユーザー名</label>
+      <lavel>問い合わせ日時</lavel>
+      <%= @inquiry.created_at.strftime('%Y/%m/%d %H:%M') %>
+    </div>
+  </div>
+
+  <div class="outline-radius padding-5">
+    <div>
+      <label class="width-100">ユーザー名</label>
       <span><%= @inquiry.customer.name %></span>
     </div>
 
     <div>
-      <label class="col-4">ユーザーID</label>
+      <label class="width-100">ユーザーID</label>
       <span><%= @inquiry.customer.id %></span>
     </div>
 
     <div>
-      <label class="col-4">内容</label>
+      <label class="width-100">内容</label>
       <span><%= @inquiry.content_i18n %></span>
     </div>
 
     <div>
-      <label class="col-4">お問い合わせ</label>
-      <span><%= @inquiry.inquiry %></span>
+      <label class="width-100">お問い合わせ</label>
+      <div><%= @inquiry.inquiry %></div>
     </div>
-
   </div>
 </div>
 <!------------------->
+<div class="left-space-30">
+  <% if @inquiry.answers.any? %>
+  <div>返信内容</div>
+  <div>
+    <% @inquiry.answers.each do |answer| %>
+    <div class="outline-radius padding-5 space-5">
+      <div><%= answer.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+      <div><%= answer.answer %></div>
+    </div>
+    <% end %>
+    </div>
+  <% end %>
+
+  </div>
+</div>
 
 <!--返信-->
 <div class="width-40p">
