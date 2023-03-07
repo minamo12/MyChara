@@ -10,6 +10,7 @@
             <th class="outline text-center">ユーザ名</th>
             <th class="outline text-center">ステータス</th>
             <th class="outline text-center">変更</th>
+            <th colspan="1" class="outline text-center"></th>
           </tr>
         </thead>
         <tbody>
@@ -28,11 +29,14 @@
             <td class="outline text-center">
               <div>
               <% if customer.is_active %>
-                <div><%= link_to "退会にする", admin_customer_path(customer.id, customer:{is_active: false}), method: :patch %></div>
+                <div><%= link_to "退会にする", admin_customer_path(customer.id, customer:{is_active: false}), method: :patch, class: "btn btn-primary" %></div>
               <% else %>
-                <div><%= link_to "有効にする", admin_customer_path(customer.id, customer:{is_active: true}), method: :patch %></div>
+                <div><%= link_to "有効にする", admin_customer_path(customer.id, customer:{is_active: true}), method: :patch, class: "btn btn-primary" %></div>
               <% end %>
               </div>
+            </td>
+            <td class="outline text-center">
+              <div><%= link_to "削除する", admin_customer_path(customer.id), method: :delete, "data-confirm" => "会員を完全に削除します。よろしいですか？", class: "btn btn-danger" %></div>
             </td>
           </tr>
         </tbody>
@@ -46,7 +50,7 @@
   <div class="title top-60">未解決のお問い合わせ(全<%= @inquiries.count %>件)</div>
   <div>
     <% @inquiries.each do |inquiry| %>
-    <div class="outline padding-5">
+    <div class="outline padding-5 space-20">
       <table>
         <tr>
           <th>ユーザー名</th>

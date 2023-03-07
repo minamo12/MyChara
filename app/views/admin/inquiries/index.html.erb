@@ -1,27 +1,31 @@
 
-<div>お問い合わせ一覧</div>
+<div class="title">お問い合わせ一覧</div>
 
 <div>
-  <% @inquiries.each do |inquiry| %>
+
   <table>
     <thead>
       <tr>
-        <th>日時</th>
-        <th>ユーザ名</th>
-        <th>ステータス</th>
-        <th>内容</th>
-        <th>解決</th>
+        <th class="outline text-center">日時</th>
+        <th class="outline text-center">ユーザ名</th>
+        <th class="outline text-center">ステータス</th>
+        <th class="outline text-center">内容</th>
+        <th class="outline text-center">解決</th>
+        <th class="outline text-center" colspan="1"></th>
       </tr>
     </thead>
     <tbody>
+      <% @inquiries.each do |inquiry| %>
       <tr>
-        <td><%= inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-        <td><%= link_to inquiry.customer.name, admin_inquiry_path(inquiry.id) %></td>
-        <td><%= inquiry.customer.is_active %></td>
-        <td><%= inquiry.content_i18n %></td>
-        <td><%= inquiry.solve %></td>
+        <td class="outline text-center"><%= inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <td class="outline text-center"><%= link_to inquiry.customer.name, admin_inquiry_path(inquiry.id) %></td>
+        <td class="outline text-center"><%= inquiry.customer.is_active %></td>
+        <td class="outline text-center"><%= inquiry.content_i18n %></td>
+        <td class="outline text-center"><%= inquiry.solve ? '解決済み' : '未解決' %></td>
+        <td class="outline text-center"><%= link_to "返信する", admin_inquiry_path(inquiry.id), class: "btn btn-success" %></td>
       </tr>
+      <% end %>
     </tbody>
   </table>
-  <% end %>
+
 </div>
