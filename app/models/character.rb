@@ -12,6 +12,11 @@ class Character < ApplicationRecord
   has_one_attached :number_c_image
 
 
+  def self.search(keyword)
+    where(["name like?", "%#{keyword}%"])
+  end
+
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

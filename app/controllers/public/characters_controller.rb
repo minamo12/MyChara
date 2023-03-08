@@ -37,6 +37,14 @@ class Public::CharactersController < ApplicationController
     redirect_to customers_my_chara_path
   end
 
+  def search
+    @characters = current_customer.characters
+    @characters = Character.search(params[:keyword])
+    @keyword = params[:keyword]
+    @customer = current_customer
+    render template: "public/customers/show"
+  end
+
   private
 
   def character_params
