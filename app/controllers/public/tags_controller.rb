@@ -29,7 +29,7 @@ class Public::TagsController < ApplicationController
   private
 
   def tag_params
-    params.require(:tag).permit(:name, :customer_id)
+    params.require(:tag).permit(:tag_name, :customer_id)
   end
 
 end

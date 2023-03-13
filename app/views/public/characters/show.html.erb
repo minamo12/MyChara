@@ -13,13 +13,13 @@
 
     <div class="padding-bottom-12 left-space-40">
       <% @character.categories.each do |category| %>
-        <span class="outline-radius-3 margin-2 nowrap font-15 padding-3"><%= category.name %></span>
+        <span class="outline-radius-3 margin-2 nowrap font-15 padding-3"><%= category.category_name %></span>
       <% end %>
     </div>
 
     <div class="padding-bottom-12 left-space-20">
       <% @character.tags.each do |tag| %>
-        <span class="outline-radius-3 margin-2 nowrap padding-3 font-13"><%= tag.name %></span>
+        <span class="outline-radius-3 margin-2 nowrap padding-3 font-13"><%= tag.tag_name %></span>
       <% end %>
     </div>
   </div>

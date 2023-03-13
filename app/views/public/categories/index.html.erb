@@ -7,7 +7,7 @@
     <div class="left-space-20 font-20">カテゴリ(全<%= @categories.count %>個)</div>
     <div class="left-space-20">
       <%= form_with model: @category, url: categories_path, method: :post do |f| %>
-        <%= f.text_field :name, :required => true %>
+        <%= f.text_field :category_name, :required => true %>
         <%= f.submit '追加' %>
       <% end %>
     </div>
@@ -15,7 +15,7 @@
 
   <div>
     <% @categories.each do |category| %>
-      <span class="margin-2 nowrap underline"><%= link_to category.name, categories_path(category_id: category.id) %></span>
+      <span class="margin-2 nowrap underline"><%= link_to category.category_name, categories_path(category_id: category.id) %></span>
       <span class="right-space-7"><%= link_to '×', category_path(category.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></span>
     <% end %>
   </div>
@@ -25,13 +25,13 @@
     <div class="pop-up padding-5 top-10">
       <div class="width-100p flex">
         <div class="right-space-15 space-5">
-        <span class="underline"><%= @edit_category.name %></span>を編集する
+        <span class="underline"><%= @edit_category.category_name %></span>を編集する
         </div>
         <div class="right-send"><%= link_to "×閉じる", categories_path %></div>
       </div>
       <div>
         <%= form_with model: @category, url: category_path(@edit_category.id), method: :patch do |f| %>
-          <%= f.text_field :name, :required => true %>
+          <%= f.text_field :category_name, :required => true %>
           <%= f.submit '更新' %>
         <% end %>
       </div>
@@ -50,7 +50,7 @@
     <div class="left-space-20 font-20">タグ(全<%= @tags.count %>個)</div>
     <div class="left-space-20">
       <%= form_with model: @tag, url: tags_path, method: :post do |f| %>
-        <%= f.text_field :name, :required => true %>
+        <%= f.text_field :tag_name, :required => true %>
         <%= f.submit '追加' %>
       <% end %>
     </div>
@@ -59,7 +59,7 @@
   <div>
     <div>
       <% @tags.each do |tag| %>
-        <span class="margin-2 nowrap underline"><%= link_to tag.name, categories_path(tag_id: tag.id) %></span>
+        <span class="margin-2 nowrap underline"><%= link_to tag.tag_name, categories_path(tag_id: tag.id) %></span>
         <span class="right-space-7"><%= link_to '×', tag_path(tag.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></span>
       <% end %>
     </div>
@@ -71,13 +71,13 @@
     <div class="pop-up padding-5 top-10">
       <div class="width-100p flex">
         <div class="right-space-15 space-5">
-        <span class="underline"><%= @edit_tag.name %></span>を編集する
+        <span class="underline"><%= @edit_tag.tag_name %></span>を編集する
         </div>
         <div class="right-send"><%= link_to "×閉じる", categories_path %></div>
       </div>
       <div>
         <%= form_with model: @tag, url: category_path(@edit_tag.id), method: :patch do |f| %>
-          <%= f.text_field :name, :required => true %>
+          <%= f.text_field :tag_name, :required => true %>
           <%= f.submit '更新' %>
         <% end %>
       </div>

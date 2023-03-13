@@ -29,7 +29,7 @@
     <tr>
       <th>カテゴリ</th>
       <td>
-        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :category_name) do |category| %>
         <span class="margin-2 nowrap">
         <%= category.label do %>
           <%= category.check_box %>
@@ -42,7 +42,7 @@
     <tr>
       <th>タグ</th>
       <td>
-        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
         <span class="margin-2 nowrap">
         <%= tag.label do %>
           <%= tag.check_box %>
@@ -86,7 +86,7 @@
   <div>カテゴリを追加する</div>
   <%= form_with model: @category, url: categories_path(character_id: @character.id), method: :post do |f| %>
     <span>
-      <%= f.text_field :name, :required => true %>
+      <%= f.text_field :category_name, :required => true %>
       <%= button_tag type: "submit" do %>
         <i class="fa-solid fa-plus"></i>
       <% end %>
@@ -98,7 +98,7 @@
   <div>タグを追加する</div>
   <%= form_with model: @tag, url: tags_path(character_id: @character.id), method: :post do |f| %>
     <span>
-      <%= f.text_field :name, :required => true %>
+      <%= f.text_field :tag_name, :required => true %>
       <%= button_tag type: "submit" do %>
         <i class="fa-solid fa-plus"></i>
       <% end %>

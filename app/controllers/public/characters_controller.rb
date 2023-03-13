@@ -39,16 +39,36 @@ class Public::CharactersController < ApplicationController
 
   def search
     @characters = current_customer.characters
-    @characters = Character.search(params[:keyword])
-    @keyword = params[:keyword]
+    @characters = @characters.search(params[:chara])
+    @chara = params[:chara]
+    @characters = @characters.uniq
     @customer = current_customer
     render template: "public/customers/show"
   end
 
   def tag_search
     @characters = current_customer.characters
+    @characters = @characters.tag_search(params[:tag])
     @tag = params[:tag]
-    @characters = Character.joins(:tags).where('name like ?', '#{@tag}')
+    @characters = @characters.uniq
+    @customer = current_customer
+    render template: "public/customers/show"
+  end
+
+  def tag_search
+    @characters = current_customer.characters
+    @characters = @characters.tag_search(params[:tag])
+    @tag = params[:tag]
+    @characters = @characters.uniq
+    @customer = current_customer
+    render template: "public/customers/show"
+  end
+
+  def category_search
+    @characters = current_customer.characters
+    @characters = @characters.category_search(params[:category])
+    @category = params[:category]
+    @characters = @characters.uniq
     @customer = current_customer
     render template: "public/customers/show"
   end

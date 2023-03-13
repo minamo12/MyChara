@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :characters, only: [:new, :show, :create, :edit, :update, :destroy]
     get 'search' => 'characters#search'
     get 'tag_search' => 'characters#tag_search'
+    get 'category_search' => 'characters#category_search'
 
     # categories
     resources :categories, only: [:index, :create, :update, :destroy]

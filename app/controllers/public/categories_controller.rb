@@ -43,7 +43,7 @@ class Public::CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name, :customer_id, :explanation)
+    params.require(:category).permit(:category_name, :customer_id, :explanation)
   end
 
 end

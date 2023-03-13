@@ -12,8 +12,16 @@ class Character < ApplicationRecord
   has_one_attached :number_c_image
 
 
-  def self.search(keyword)
-    where(["name like? OR explanation like?", "%#{keyword}%", "%#{keyword}%"])
+  def self.search(chara)
+    where(["explanation like? OR name like?", "%#{chara}%", "%#{chara}%"])
+  end
+
+  def self.tag_search(tag)
+    joins(:tags).where(["tag_name like?", "%#{tag}%"])
+  end
+
+  def self.category_search(category)
+    joins(:categories).where(["category_name like?", "%#{category}%"])
   end
 
 
