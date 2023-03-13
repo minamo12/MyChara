@@ -13,7 +13,7 @@ class Character < ApplicationRecord
 
 
   def self.search(keyword)
-    where(["name like?", "%#{keyword}%"])
+    where(["name like? OR explanation like?", "%#{keyword}%", "%#{keyword}%"])
   end
 
 

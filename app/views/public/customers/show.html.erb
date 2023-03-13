@@ -1,6 +1,5 @@
 
-<!--検索機能-->
-
+<!--名称検索-->
 <div>
   <%= form_with url: search_path, method: :get, local: true do |f| %>
     <%= f.text_field :keyword, value: @keyword, :required => true %>
@@ -9,6 +8,15 @@
 </div>
 
 <div><%= link_to "すべて表示", customers_my_chara_path %></div>
+<!---->
+
+
+<!--タグ検索-->
+
+<%= form_with(url: tag_search_path, local: true, method: :get) do |f| %>
+  <%= f.text_field :tag %>
+  <%= f.submit "検索" %>
+<% end %>
 
 <!---->
 

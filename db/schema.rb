@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2023_02_18_080933) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "customer_id", null: false
-    t.string "name", null: false
+    t.string "category_name", null: false
   end
 
   create_table "characters", force: :cascade do |t|
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2023_02_18_080933) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "customer_id", null: false
-    t.string "name", null: false
+    t.string "tag_name", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

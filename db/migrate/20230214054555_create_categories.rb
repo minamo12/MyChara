@@ -4,7 +4,7 @@ class CreateCategories < ActiveRecord::Migration[6.1]
 
       t.timestamps
       t.integer :customer_id, null: false
-      t.string :name, null: false
+      t.string :category_name, null: false
     end
   end
 end

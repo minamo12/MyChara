@@ -45,6 +45,14 @@ class Public::CharactersController < ApplicationController
     render template: "public/customers/show"
   end
 
+  def tag_search
+    @characters = current_customer.characters
+    @tag = params[:tag]
+    @characters = Character.joins(:tags).where('name like ?', '#{@tag}')
+    @customer = current_customer
+    render template: "public/customers/show"
+  end
+
   private
 
   def character_params
