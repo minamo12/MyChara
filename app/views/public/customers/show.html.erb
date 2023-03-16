@@ -2,26 +2,45 @@
 <!--名称検索-->
 <div>
   <div>名称検索</div>
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :chara, value: @chara, :required => true %>
-    <%= f.submit "検索" %>
-  <% end %>
+  <div>
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :chara, value: @chara, :required => true %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
 </div>
 
 <div>
   <div>タグ検索</div>
+  <div>
   <%= form_with url: tag_search_path, method: :get, local: true do |f| %>
     <%= f.text_field :tag, value: @tag, :required => true %>
     <%= f.submit "検索" %>
   <% end %>
+  </div>
+
+  <button id="tag-button">一覧から探す</button>
+  <div id="tag-index">
+    <% @all_tags.each do |tag| %>
+      <%= link_to tag.tag_name, customers_my_chara_path(tag_id: tag.id) %>
+    <% end %>
+  </div>
 </div>
 
 <div>
   <div>カテゴリ検索</div>
+  <div>
   <%= form_with url: category_search_path, method: :get, local: true do |f| %>
     <%= f.text_field :category, value: @category, :required => true %>
     <%= f.submit "検索" %>
   <% end %>
+  </div>
+  <button id="category-button">一覧から探す</button>
+  <div id="category-index">
+    <% @all_categories.each do |category| %>
+      <%= link_to category.category_name, customers_my_chara_path(category_id: category.id) %>
+    <% end %>
+  </div>
 </div>
 
 <div><%= link_to "すべて表示", customers_my_chara_path %></div>
@@ -73,3 +92,19 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $('#tag-index').hide();
+
+  $('#tag-button').click(function () {
+    $('#tag-index').toggle();
+  })
+</script>
+
+<script>
+  $('#category-index').hide();
+
+  $('#category-button').click(function () {
+    $('#category-index').toggle();
+  })
+</script>

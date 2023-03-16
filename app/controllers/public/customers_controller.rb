@@ -3,6 +3,19 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
     @characters = @customer.characters
+    @all_characters = @customer.characters
+    @all_tags = @customer.tags
+    @all_categories = @customer.categories
+
+    if params[:tag_id].present?
+      tag = Tag.find(params[:tag_id])
+      @characters = tag.characters
+    end
+
+    if params[:category_id].present?
+      category = Category.find(params[:category_id])
+      @characters = category.characters
+    end
   end
 
   def edit

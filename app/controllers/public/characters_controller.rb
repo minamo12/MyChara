@@ -42,7 +42,11 @@ class Public::CharactersController < ApplicationController
     @characters = @characters.search(params[:chara])
     @chara = params[:chara]
     @characters = @characters.uniq
+
     @customer = current_customer
+    @all_characters = @customer.characters
+    @all_tags = @customer.tags
+    @all_categories = @customer.categories
     render template: "public/customers/show"
   end
 
@@ -51,16 +55,11 @@ class Public::CharactersController < ApplicationController
     @characters = @characters.tag_search(params[:tag])
     @tag = params[:tag]
     @characters = @characters.uniq
-    @customer = current_customer
-    render template: "public/customers/show"
-  end
 
-  def tag_search
-    @characters = current_customer.characters
-    @characters = @characters.tag_search(params[:tag])
-    @tag = params[:tag]
-    @characters = @characters.uniq
     @customer = current_customer
+    @all_characters = @customer.characters
+    @all_tags = @customer.tags
+    @all_categories = @customer.categories
     render template: "public/customers/show"
   end
 
@@ -69,7 +68,11 @@ class Public::CharactersController < ApplicationController
     @characters = @characters.category_search(params[:category])
     @category = params[:category]
     @characters = @characters.uniq
+
     @customer = current_customer
+    @all_characters = @customer.characters
+    @all_tags = @customer.tags
+    @all_categories = @customer.categories
     render template: "public/customers/show"
   end
 

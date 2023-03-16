@@ -290,16 +290,6 @@
 
 /*ポップアップ*/
 
-.info-text {
-  background-color: #EEE;
-  border: solid 1px;
-  display: none;
-}
-
-.info:hover + .info-text{
-  position: absolute;
-  display: block;
-}
 
 /********************//********************/
 
@@ -337,13 +327,6 @@
   font-weight: bold;
   font-size: 22px;
   border-bottom: 1px solid;
-}
-
-.pop-up {
-  background-color: #eee;
-  border: solid 1px;
-  border-color: gray;
-  position: absolute;
 }
 
 /********************//********************/
