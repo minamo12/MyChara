@@ -13,6 +13,10 @@ class Customer < ApplicationRecord
   has_many :characters, dependent: :destroy
   has_many :inquiries, dependent: :destroy
 
+  def self.customer_name_search(customer_name)
+    where(["name like?", "%#{customer_name}%"])
+  end
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

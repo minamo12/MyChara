@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   namespace :admin do
     # customers
     resources :customers, only: [:index, :update, :destroy]
+    get 'customer_search' => 'customers#customer_search'
 
     # inquiries
     resources :inquiries, only: [:index, :show, :create]

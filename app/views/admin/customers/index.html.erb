@@ -1,47 +1,61 @@
 
 <div>
+
+  <div>
+    <%= form_with url: admin_customer_search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :customer_name, value: @customer_name %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+  <div><%= link_to "すべて表示する", admin_customers_path %></div>
+  <div>
+    <span><%= link_to "有効の会員のみ表示する", admin_customers_path(is_active_true: 1) %></span>：
+    <span><%= link_to "無効の会員のみ表示する", admin_customers_path(is_active_false: 2) %></span>
+  </div>
+
   <div class="title">会員一覧</div>
   <div>
-    <% @customers.each do |customer| %>
-      <table>
-        <thead>
-          <tr>
-            <th class="outline text-center">ID</th>
-            <th class="outline text-center">ユーザ名</th>
-            <th class="outline text-center">ステータス</th>
-            <th class="outline text-center">変更</th>
-            <th colspan="1" class="outline text-center"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="outline text-center"><%= customer.id %></td>
-            <td class="outline text-center"><%= customer.name %></td>
-            <td class="outline text-center">
-              <div>
-              <% if customer.is_active %>
-                <div>有効</div>
-              <% else %>
-                <div>退会</div>
-              <% end %>
-              </div>
-            </td>
-            <td class="outline text-center">
-              <div>
-              <% if customer.is_active %>
-                <div><%= link_to "退会にする", admin_customer_path(customer.id, customer:{is_active: false}), method: :patch, "data-confirm" => "退会にしますか？", class: "btn btn-primary" %></div>
-              <% else %>
-                <div><%= link_to "有効にする", admin_customer_path(customer.id, customer:{is_active: true}), method: :patch, "data-confirm" => "有効にしますか？", class: "btn btn-primary" %></div>
-              <% end %>
-              </div>
-            </td>
-            <td class="outline text-center">
-              <div><%= link_to "削除する", admin_customer_path(customer.id), method: :delete, "data-confirm" => "会員を完全に削除します。よろしいですか？", class: "btn btn-danger" %></div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
+    <table>
+      <thead>
+        <tr>
+          <th class="outline text-center">ID</th>
+          <th class="outline text-center">ユーザ名</th>
+          <th class="outline text-center">ステータス</th>
+          <th class="outline text-center">変更</th>
+          <th colspan="1" class="outline text-center"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td class="outline text-center"><%= customer.id %></td>
+          <td class="outline text-center"><%= customer.name %></td>
+          <td class="outline text-center">
+            <div>
+            <% if customer.is_active %>
+              <div>有効</div>
+            <% else %>
+              <div>退会</div>
+            <% end %>
+            </div>
+          </td>
+          <td class="outline text-center">
+            <div>
+            <% if customer.is_active %>
+              <div><%= link_to "退会にする", admin_customer_path(customer.id, customer:{is_active: false}), method: :patch, "data-confirm" => "退会にしますか？", class: "btn btn-primary" %></div>
+            <% else %>
+              <div><%= link_to "有効にする", admin_customer_path(customer.id, customer:{is_active: true}), method: :patch, "data-confirm" => "有効にしますか？", class: "btn btn-primary" %></div>
+            <% end %>
+            </div>
+          </td>
+          <td class="outline text-center">
+            <div><%= link_to "削除する", admin_customer_path(customer.id), method: :delete, "data-confirm" => "会員を完全に削除します。よろしいですか？", class: "btn btn-danger" %></div>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
