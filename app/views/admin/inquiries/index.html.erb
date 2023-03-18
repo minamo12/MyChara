@@ -3,6 +3,16 @@
 
 <div>
 
+  <div>
+    <div><%= link_to "アカウントの復活", admin_inquiries_path(revival: 1) %></div>
+    <div><%= link_to "アカウントの完全削除", admin_inquiries_path(delete: 1) %></div>
+    <div><%= link_to "利用方法について", admin_inquiries_path(how: 1) %></div>
+    <div><%= link_to "その他", admin_inquiries_path(other: 1) %></div>
+    <div><%= link_to "解決済み", admin_inquiries_path(solve_true: 1) %></div>
+    <div><%= link_to "未解決", admin_inquiries_path(solve_false: 1) %></div>
+    <div><%= link_to "全て表示する", admin_inquiries_path %></div>
+  </div>
+
   <table>
     <thead>
       <tr>
