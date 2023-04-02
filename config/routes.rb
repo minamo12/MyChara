@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'materials/index'
+    get 'materials/show'
+  end
   devise_for :customer, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -36,6 +40,9 @@ Rails.application.routes.draw do
 
     # inquiries
     resources :inquiries, only: [:new, :create, :update]
+
+    # materials
+    resources :materials, only: [:index, :create, :update, :destroy]
   end
 
   # ++++++++++++++++++++++++++++++++++++++++

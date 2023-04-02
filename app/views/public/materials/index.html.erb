@@ -1,0 +1,20 @@
+<div class="title">ネタ一覧</div>
+
+<div>
+  <div>新規登録</div>
+  <div>
+    <%= form_with model: @material, url: materials_path, method: :post do |f| %>
+      <%= f.text_field :material %>
+      <%= f.submit '新規登録' %>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <div>ネタ一覧</div>
+  <div>
+    <% @materials.each do |material| %>
+      <div><%= material.material %></div>
+    <% end %>
+  </div>
+</div>

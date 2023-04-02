@@ -1,9 +1,10 @@
 class Public::CharactersController < ApplicationController
 
   def new
+    @customer = current_customer
     @character = Character.new
-    @categories = Category.all
-    @tags = Tag.all
+    @categories = @customer.categories
+    @tags = @customer.categories
     @category = Category.new
     @tag = Tag.new
   end

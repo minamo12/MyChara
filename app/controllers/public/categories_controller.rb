@@ -1,8 +1,9 @@
 class Public::CategoriesController < ApplicationController
 
   def index
-    @categories = Category.all
-    @tags = Tag.all
+    @customer = current_customer
+    @categories = @customer.categories
+    @tags = @customer.tags
     @category = Category.new
     @tag = Tag.new
     if params[:category_id].present?
