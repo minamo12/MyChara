@@ -21,9 +21,36 @@
           <div>
             <div class="space-5"><%= material.created_at.strftime('%Y/%m/%d %H:%M') %></div>
             <span class="outline-radius-3 padding-3"><%= material.material %></span>
+
+            <!--ネタ編集ポップアップ-->
+
+              <% if @edit_material.present? %>
+
+              <div class="space-70">
+                <% if @edit_material.present? %>
+                <div class="pop-up padding-5 top-10">
+                  <div class="width-100p flex">
+                    <div class="right-space-15 space-5">編集する</div>
+                    <div class="right-send"><%= link_to "×閉じる", materials_path %></div>
+                  </div>
+                  <div>
+                    <%= form_with model: @edit_material, url: material_path(@edit_material.id), method: :patch do |f| %>
+                      <%= f.text_field :material, :required => true %>
+                      <%= f.submit '更新' %>
+                    <% end %>
+                  </div>
+                <% else %>
+                </div>
+                <% end %>
+              </div>
+              <% end %>
+
+            <!---->
+
           </div>
+
           <div class="flex">
-            <div>編集</div>
+            <div><%= link_to "編集", materials_path(material_id: material.id) %></div>
             <div>削除</div>
           </div>
         </div>
