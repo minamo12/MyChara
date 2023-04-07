@@ -1,20 +1,33 @@
-<div class="title">ネタ一覧</div>
 
-<div>
-  <div>新規登録</div>
+
+<div class="title">ネタ新規登録</div>
+<div class="left-space-20 space-50">
   <div>
     <%= form_with model: @material, url: materials_path, method: :post do |f| %>
       <%= f.text_field :material %>
-      <%= f.submit '新規登録' %>
+      <%= f.submit '追加' %>
     <% end %>
   </div>
 </div>
 
-<div>
-  <div>ネタ一覧</div>
+
+<div class="title space-10">ネタ一覧(全<%= @materials.count %>)</div>
+
+<div class="left-space-20 width-80p">
   <div>
-    <% @materials.each do |material| %>
-      <div><%= material.material %></div>
-    <% end %>
+    <div>
+      <% @materials.each do |material| %>
+        <div class="space-20">
+          <div>
+            <div class="space-5"><%= material.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+            <span class="outline-radius-3 padding-3"><%= material.material %></span>
+          </div>
+          <div class="flex">
+            <div>編集</div>
+            <div>削除</div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
