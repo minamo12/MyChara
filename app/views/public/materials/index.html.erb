@@ -7,6 +7,17 @@
 
 <div>
   <% @materials.each do |material| %>
+  <div><%= material.material_title %></div>
   <div><%= material.material %></div>
+  <div>
+    <% material.categories.each do |category| %>
+      <div><%= category.category_name %></div>
+    <% end %>
+  </div>
+  <div>
+    <% material.tags.each do |tag| %>
+      <div><%= tag.tag_name %></div>
+    <% end %>
+  </div>
   <% end %>
 </div>
