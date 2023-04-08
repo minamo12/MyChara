@@ -6,6 +6,7 @@ class CreateMaterials < ActiveRecord::Migration[6.1]
 
       t.text :material, null: false
       t.integer :customer_id, null: false
+      t.string :material_title, null: false
     end
   end
 end

@@ -1,0 +1,49 @@
+
+<div class="title">ネタ新規登録</div>
+
+<div>
+  <%= form_with model: @material, url: materials_path, method: :post do |f| %>
+
+    <table>
+      <tr>
+        <th>タイトル</th>
+        <td><%= f.text_field :material_title %></td>
+      </tr>
+      <tr>
+        <th>内容</th>
+        <td><%= f.text_area :material %></td>
+      </tr>
+      <tr>
+        <th>タグ</th>
+        <td>
+          <%= f.collection_check_boxes(:category_ids, Category.all, :id, :category_name) do |category| %>
+          <span class="margin-2 nowrap">
+          <%= category.label do %>
+            <%= category.check_box %>
+            <span class="underline"><%= category.text %></span>
+          <% end %>
+          </span>
+        <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>カテゴリ</th>
+        <td>
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
+          <span class="margin-2 nowrap">
+          <%= tag.label do %>
+            <%= tag.check_box %>
+            <span class="underline"><%= tag.text %></span>
+          <% end %>
+          </span>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= f.submit "登録" %></td>
+      </tr>
+    </table>
+
+  <% end %>
+</div>

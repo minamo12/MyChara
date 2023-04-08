@@ -1,13 +1,12 @@
 class Public::MaterialsController < ApplicationController
 
   def index
-    @material = Material.new
     @customer = current_customer
     @materials = @customer.materials
-    if params[:material_id].present?
-      @edit_material = Material.find(params[:material_id])
-      @@edit_material = @edit_material
-    end
+  end
+
+  def new
+    @material = Material.new
   end
 
   def create
@@ -23,8 +22,12 @@ class Public::MaterialsController < ApplicationController
     redirect_to materials_path
   end
 
+  def edit
+    @material = Material.find(params[:id])
+  end
+
   def update
-    @material = @@edit_material
+    @material = Material.find(params[:id])
     @material.update(material_params)
     redirect_to materials_path
   end
@@ -32,7 +35,7 @@ class Public::MaterialsController < ApplicationController
   private
 
   def material_params
-    params.require(:material).permit(:material, :customer_id)
+    params.require(:material).permit(:material, :customer_id, :material_title, category_ids: [], tag_ids: [])
   end
 
 end
