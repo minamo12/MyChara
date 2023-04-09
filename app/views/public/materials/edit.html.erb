@@ -1,5 +1,9 @@
 
-<div class="title">編集</div>
+<div>
+  <div class="title">編集</div>
+  <div><%= link_to "削除する", material_path(@material.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+</div>
+
 
 <div>
   <%= form_with model: @material, url: material_path, method: :patch do |f| %>
