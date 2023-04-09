@@ -7,6 +7,8 @@ class Public::MaterialsController < ApplicationController
 
   def new
     @material = Material.new
+    @tag = Tag.new
+    @category = Category.new
   end
 
   def create
@@ -28,6 +30,8 @@ class Public::MaterialsController < ApplicationController
 
   def edit
     @material = Material.find(params[:id])
+    @category = Category.new
+    @tag = Tag.new
   end
 
   def update

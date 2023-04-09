@@ -1,23 +1,29 @@
 
-<div class="title">詳細画面</div>
-
-<div class="font-25">
-  <%= link_to(edit_material_path(@material.id)) do %>
-    <i class="fa-regular fa-pen-to-square"></i>
-  <% end %>
+<div class="flex">
+  <div class="title right-space-15">詳細画面</div>
+  <div class="font-25">
+    <%= link_to(edit_material_path(@material.id)) do %>
+      <i class="fa-regular fa-pen-to-square"></i>
+    <% end %>
+  </div>
 </div>
 
+
+
+
 <div>
-  <div><%= @material.created_at.strftime('%Y/%m/%d %H:%M') %></div>
-  <div><%= safe_join(@material.material.split("\n"),tag(:br)) %></div>
-  <div>
+  <div class="space-10"><%= @material.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+  <div class="outline-radius-3 width-80p height-200 space-30 padding-5"><%= safe_join(@material.material.split("\n"),tag(:br)) %></div>
+  <div class="space-10">
+    <label class="width-100 text-center">カテゴリ</label>
     <% @material.categories.each do |category| %>
-      <div><%= category.category_name %></div>
+      <span class="outline-radius-3"><%= category.category_name %></span>
     <% end %>
   </div>
   <div>
+    <label class="width-100 text-center">タグ</label>
     <% @material.tags.each do |tag| %>
-      <div><%= tag.tag_name %></div>
+      <span class="outline-radius-3"><%= tag.tag_name %></span>
     <% end %>
   </div>
 </div>

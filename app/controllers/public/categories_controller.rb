@@ -30,6 +30,10 @@ class Public::CategoriesController < ApplicationController
       redirect_to new_character_path
     elsif params[:character_id]
       redirect_to edit_character_path(id: params[:character_id])
+    elsif params[:mate]
+      redirect_to new_material_path
+    elsif params[:material_id]
+      redirect_to edit_material_path(id: params[:material_id])
     else
       redirect_to categories_path
     end
