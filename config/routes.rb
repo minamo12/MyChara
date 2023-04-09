@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     resources :inquiries, only: [:new, :create, :update]
 
     # materials
-    resources :materials, only: [:index, :create, :update, :destroy, :edit, :new]
+    resources :materials, only: [:index, :create, :update, :destroy, :edit, :new, :show]
   end
 
   # ++++++++++++++++++++++++++++++++++++++++

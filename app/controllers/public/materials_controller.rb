@@ -16,6 +16,10 @@ class Public::MaterialsController < ApplicationController
     redirect_to materials_path
   end
 
+  def show
+    @material = Material.find(params[:id])
+  end
+
   def destroy
     @material = Material.find(params[:id])
     @material.destroy

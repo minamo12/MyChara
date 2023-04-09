@@ -1,0 +1,23 @@
+
+<div class="title">詳細画面</div>
+
+<div class="font-25">
+  <%= link_to(edit_material_path(@material.id)) do %>
+    <i class="fa-regular fa-pen-to-square"></i>
+  <% end %>
+</div>
+
+<div>
+  <div><%= @material.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+  <div><%= safe_join(@material.material.split("\n"),tag(:br)) %></div>
+  <div>
+    <% @material.categories.each do |category| %>
+      <div><%= category.category_name %></div>
+    <% end %>
+  </div>
+  <div>
+    <% @material.tags.each do |tag| %>
+      <div><%= tag.tag_name %></div>
+    <% end %>
+  </div>
+</div>

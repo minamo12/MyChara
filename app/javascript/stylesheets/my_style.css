@@ -171,12 +171,20 @@
   padding: 20px;
 }
 
+.padding-8 {
+  padding: 8px;
+}
+
 .padding-5 {
   padding: 5px;
 }
 
 .padding-3 {
   padding: 3px;
+}
+
+.padding-1 {
+  padding: 1px;
 }
 
 /**/
@@ -262,10 +270,6 @@
   margin-left: auto;
 }
 
-.text-right-send {
-  text-align: right;
-}
-
 .text-bottom-send {
   align-items: flex-end;
 }
@@ -280,6 +284,14 @@
 
 .column-3 {
   column-count: 3;
+}
+
+.column-2 {
+  column-count: 2;
+}
+
+.avoid {
+  break-inside: avoid;
 }
 
 .wrap {
