@@ -2,7 +2,6 @@ class Admin::CustomersController < ApplicationController
 
   def index
     @customers = Customer.all
-    @inquiries = Inquiry.where(solve: 'false')
 
     if params[:is_active_true].present?
       @customers = Customer.where(is_active: 'true')
@@ -26,7 +25,6 @@ class Admin::CustomersController < ApplicationController
 
   def customer_search
     @customers = Customer.customer_name_search(params[:customer_name])
-    @inquiries = Inquiry.where(solve: 'false')
     render "index"
   end
 

@@ -52,14 +52,6 @@ ActiveRecord::Schema.define(version: 2023_04_08_125834) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "answers", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "inquiry_id", null: false
-    t.integer "customer_id", null: false
-    t.text "answer", null: false
-  end
-
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -101,29 +93,6 @@ ActiveRecord::Schema.define(version: 2023_04_08_125834) do
     t.boolean "is_active", default: true, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
-  end
-
-  create_table "inquiries", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id", null: false
-    t.text "inquiry", null: false
-    t.integer "content", null: false
-    t.boolean "solve", default: false, null: false
-  end
-
-  create_table "material_and_categories", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "material_id", null: false
-    t.integer "category_id", null: false
-  end
-
-  create_table "material_and_tags", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "material_id", null: false
-    t.integer "tag_id", null: false
   end
 
   create_table "materials", force: :cascade do |t|

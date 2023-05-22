@@ -25,65 +25,6 @@
     <div class="text-center"><%= link_to "ネタ一覧", materials_path, class: 'padding-20 outline-radius' %></div>
   </div>
 
-  <div>
-    <!--お問い合わせをした場合に表示-->
-    <% if @inquiries.count == 0 %>
-    <% else %>
-    <div class="flex top-60">
-      <div class="title">お問い合わせ</div>
-      <div>
-        <i class="fa-solid fa-circle-info info"></i>
-        <div class="info-text">
-          <div>
-            お問い合わせ内容が解決しましたら「解決」をクリックして下さい。</br>
-            不十分な場合は、お手数ですがもう一度お問い合わせフォームよりご連絡をお願いします。</br>
-          </div>
-        </div>
-      </div>
-    </div>
-
-      <div class="width-500">
-        <% @inquiries.each do |inquiry| %>
-          <div class="outline-radius padding-5 space-20">
-            <table>
-              <tr>
-                <th class="text-center">日時</th>
-                <td><%= inquiry.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-              </tr>
-              <tr>
-                <th class="text-center">内容</th>
-                <td><%= inquiry.content_i18n %></td>
-              </tr>
-              <tr>
-                <th 　class="text-center">お問い合わせ</th>
-                <td><%= inquiry.inquiry %></td>
-              </tr>
-              <tr>
-                <th>返信内容</th>
-              </tr>
-            </table>
-
-            <div class="left-space-5">
-              <% if inquiry.answers.any? %>
-
-                <% inquiry.answers.each do |answer| %>
-                  <div><%= answer.answer %></div>
-                <% end %>
-
-                <div class="font-25 left-space-40">
-                  <%= link_to(inquiry_path(inquiry.id, inquiry: {solve: true}),method: :patch,"data-confirm" => "「解決済み」にしますか？") do %>
-                  解決<i class="fa-solid fa-check-to-slot"></i>
-                  <% end %>
-                </div>
-              <% else %>
-                <div>まだ返信がありません。少々お待ちください。</div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-        <% end %>
-      </div>
-
   <!--会員未ログイン時表示-->
   <% else %>
 

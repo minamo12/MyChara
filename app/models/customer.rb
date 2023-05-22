@@ -11,7 +11,6 @@ class Customer < ApplicationRecord
   has_many :categories, dependent: :destroy
   has_many :tags, dependent: :destroy
   has_many :characters, dependent: :destroy
-  has_many :inquiries, dependent: :destroy
   has_many :materials, dependent: :destroy
 
   def self.customer_name_search(customer_name)

@@ -1,7 +1,7 @@
 
-<div>
+<div class="flex width-60p">
   <div class="title">編集</div>
-  <div><%= link_to "削除する", material_path(@material.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+  <div class="right-send"><%= link_to "削除する", material_path(@material.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></div>
 </div>
 
 
